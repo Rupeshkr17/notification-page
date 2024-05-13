@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Notifications page</title>
+
+  <style>
+    body {
+      font-family: Plus Jakarta Sans;
+      font-size: 15px;
+      background-color: hsl(210, 60%, 98%);
+    }
+    .outer-page {
+       display: flex;
+       flex-direction: column;
+       align-items: center; 
+       padding: 4rem 19rem 4rem 19rem;
+    }
+    .inner-page {
+      background-color: hsl(0, 0%, 100%);
+      border-radius: 15px;
+    }
+    .header-element {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 10px;
+      justify-content: space-between;
+    }
+    .header-notification {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding-left: 10px;
+    }
+    .header-text {
+      font-size: 30px;
+      font-weight: 800;
+    }
+    .count {
+      background-color: hsl(219, 85%, 26%);
+      color: white;
+      border-radius: 5px;
+      margin-left: 5px;
+    }
+    button{
+      background: transparent;
+      border: none;
+    }
+    .mark-read:hover, .name:hover, .about:hover {
+      color: hsl(219, 85%, 26%);
+      cursor: pointer;
+    }
+    .profile-pic img {
+      width: 3rem;
+    }
+    .kimberly-post img {
+      width: 3rem;
+      /* margin-left: 9rem; */
+      align-content: ;
+      cursor: pointer;
+    }
+    .unread-notifications {
+      background-color: hsl(210, 60%, 98%);
+      margin-top: 7px;
+      margin-left: 20px;
+      margin-right: 20px;
+      display: flex;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .read-notifications {
+      background-color: white;
+      margin-top: 7px;
+      margin-left: 20px;
+      margin-right: 20px;
+      display: flex;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .name {
+      font-weight: 800;
+      color: hsl(224, 21%, 14%);
+      margin-left: 4px;
+    }
+    .action, .time-stamp {
+      font-weight: 500;
+      margin-left: 4px;
+      color: hsl(219, 12%, 42%);
+    }
+    .about {
+      font-weight: 800;
+      margin-left: 4px;
+      color: hsl(219, 12%, 42%);
+    }
+    .content {
+      margin-left: 10px;
+    }
+    .message {
+      display: flex;
+      margin-top: .5rem;
+      justify-content: left;
+      
+    }
+    .indicator {
+      background: hsl(1, 90%, 64%);
+      height: 7px;
+      width: 7px;
+      border-radius: 50%;
+      /* position: absolute; */
+      display: block;
+      top: 10px;
+      right: 10px;
+    }
+    .Rizky-message {
+      background-color: hsl(211, 68%, 94%);
+      color: hsl(219, 12%, 42%);
+      cursor: pointer;
+      border-radius: 7px;
+      padding: 15px;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="outer-page">
+    <div class="inner-page">
+      <div class="header-element">
+        <div class="header-notification">
+          <div class="header-text">Notifications</div>
+          <div class="count"></div>
+        </div>
+        <button class="mark-read js-mark-read">
+          Mark all as read
+      </button>
+      </div>
+      <div onclick="
+        read();
+        "id=readNotification class="unread-notifications">
+        <div class="profile-pic">
+          <img src="/assets/images/avatar-mark-webber.webp">
+        </div>
+        <div class="content">
+          <div class="message">
+            <div class="name">Mark Webber</div>
+            <div class="action">reacted to your recent post</div>
+            <div class="about">My first tournament today!</div>
+            <div class="indicator"></div>
+          </div>
+          <div class="time-stamp">
+            1m ago
+          </div>
+        </div>
+      </div>
+      <div class="unread-notifications">
+        <div class="profile-pic">
+          <img src="/assets/images/avatar-angela-gray.webp">
+        </div>
+        <div class="content">
+          <div class="message">
+            <div class="name">Angela Gray</div>
+            <div class="action">followed you</div>
+            <div class="indicator"></div>
+          </div>
+          <div class="time-stamp">
+            5m ago
+          </div>
+        </div>
+      </div>
+      <div class="unread-notifications">
+        <div class="profile-pic">
+          <img src="/assets/images/avatar-jacob-thompson.webp">
+        </div>
+        <div class="content">
+          <div class="message">
+            <div class="name">Jacob Thompson</div>
+            <div class="action">has joined your group</div>
+            <div class="about">Chess Club</div>
+            <div class="indicator"></div>
+          </div>
+          <div class="time-stamp">1 day ago</div>
+        </div>
+      </div>
+      <div class="read-notifications">
+        <div class="profile-pic">
+          <img src="/assets/images/avatar-rizky-hasanuddin.webp">
+        </div>
+        <div class="content">
+          <div class="message">
+            <div class="name">Rizky Hasanuddin</div>
+            <div class="action">sent you a private message</div>
+            <!-- <div class="indicator"></div> -->
+          </div>
+          <div class="time-stamp">
+            5 days ago
+          </div>
+          <div class="Rizky-message">
+            <p>Hello, thanks for setting up the Chess Club. I've been a member for a few weeks now and I'm ready having lots of fun and improving my game.</p>
+          </div>
+        </div>
+      </div>
+      <div class="read-notifications">
+        <div class="profile-pic">
+          <img src="/assets/images/avatar-kimberly-smith.webp">
+        </div>
+        <div class="content">
+          <div class="message">
+            <div class="name">Kimberly Smith</div>
+            <div class="action">commented on your picture</div>
+            <!-- <div class="indicator"></div> -->
+          </div>
+          <div class="time-stamp">
+            5m ago
+          </div>
+        </div>
+        <div class="kimberly-post">
+          <img src="/assets/images/image-chess.webp">
+        </div>
+      </div>
+      <div class="read-notifications">
+        <div class="profile-pic">
+          <img src="/assets/images/avatar-nathan-peterson.webp">
+        </div>
+        <div class="content">
+          <div class="message">
+            <div class="name">Nathan Peterson</div>
+            <div class="action">reacted to your recent post</div>
+            <div class="about">5 end-game strategies to increase your win rate</div>
+            <!-- <div class="indicator"></div> -->
+          </div>
+          <div class="time-stamp">
+            2 weeks ago
+          </div>
+        </div>
+      </div>
+      <div class="read-notifications">
+        <div class="profile-pic">
+          <img src="/assets/images/avatar-anna-kim.webp">
+        </div>
+        <div class="content">
+          <div class="message">
+            <div class="name">Anna Kim</div>
+            <div class="action">left the group</div>
+            <div class="about">chess club</div>
+            <!-- <div class="indicator"></div> -->
+          </div>
+          <div class="time-stamp">
+            2 weeks ago
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+  </script>
+</body>
+</html>
